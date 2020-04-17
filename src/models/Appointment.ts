@@ -22,6 +22,9 @@ class Appointment {
     @JoinColumn({ name: 'provider_id' })
     provider: User;
 
+    @Column()
+    date: Date;
+
     @CreateDateColumn()
     created_at: Date;
 
