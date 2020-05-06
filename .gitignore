@@ -9,3 +9,5 @@ tmp/*
 .env
 dist/
 data/
+
+*.log
