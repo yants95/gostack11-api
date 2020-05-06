@@ -1,0 +1,40 @@
+version: "3"
+
+networks:
+    gobarber-api-network:
+        driver: "bridge"
+
+services:
+    postgres:
+        env_file: .env
+        container_name: postgres-container
+        image: postgres
+        restart: always
+        environment:
+            - POSTGRES_USERNAME=${POSTGRES_USERNAME}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+            - POSTGRES_DB=${DB_NAME}
+        volumes:
+            - ./data:/data/db
+        networks:
+            - gobarber-api-network
+        ports:
+            - "5432:5432"
+
+    api:
+        container_name: api-container
+        build: .
+        image: go-barber-api
+        restart: always
+        command: >
+            bash -c "yarn typeorm migration:run && yarn dev:server"
+        volumes:
+            - ./:/var/www/iniciando-back-end
+        networks:
+            - gobarber-api-network
+        ports:
+            - "3333:3333"
+        links:
+            - postgres
+        depends_on:
+            - postgres
