@@ -35,24 +35,12 @@ $ git clone https://github.com/yants95/gostack11-api.git
 # Enter on folder
 $ cd gostack11-api
 
-# Install dependencies
-$ yarn
-
-Now, turn on your docker app and run:
+Now, turn on your docker and run:
 
 # Create docker container
-$ docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+$ yarn run up
 
-# List all containers (up and down)
-PS: run docker ps -a and ensure that your container gostack_postgres is up, else run docker start gostack_postgres
-
-After that:
-
-# Run all migrations
-$ yarn typeorm migration:run
-
-# Start server
-$ yarn dev:server
+PS: If you want shutdown your containers, run: yarn run down
 ```
 
 After you run all the commands in sequence, your API should be running at address **http://localhost:3333**
