@@ -14,9 +14,13 @@ export default class ForgotPasswordControler {
             SendForgotPasswordEmailService,
         );
 
-        await sendForgotPasswordEmail.execute({
-            email,
-        });
+        try {
+            await sendForgotPasswordEmail.execute({
+                email,
+            });
+        } catch (e) {
+            console.log(e);
+        }
 
         return response.status(204).json();
     }
