@@ -9,9 +9,9 @@ tmp/*
 !tmp/.gitkeep
 .env
 dist/
+
 postgres-data/
 mongo-data/
+redis-data/
 
 *.log
-
-.ormconfig.js
