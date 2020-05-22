@@ -15,11 +15,43 @@ services:
             - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
             - POSTGRES_DB=${DB_NAME}
         volumes:
-            - ./data:/data/db
+            - ./postgres-data:/data/db
         networks:
             - gobarber-api-network
         ports:
             - "5432:5432"
+
+    mongo:
+        env_file: .env
+        container_name: mongo-container
+        image: mongo
+        restart: always
+        environment:
+            - ALLOW_EMPTY_PASSWORD=no
+            - MONGO_USER=${MONGO_USER}
+            - MONGO_PASS=${MONGO_PASS}
+            - MONGO_DB=${MONGO_DB}
+        volumes:
+            - ./mongo-data:/data/db
+        networks:
+            - gobarber-api-network
+        ports:
+            - "27017:27017"
+
+    redis:
+        env_file: .env
+        container_name: redis-container
+        image: redis:alpine
+        restart: always
+        environment:
+            - ALLOW_EMPTY_PASSWORD=no
+            - REDIS_PASSWORD=${REDIS_PASS}
+        volumes:
+            - ./redis-data:/data/redis/db
+        networks:
+            - gobarber-api-network
+        ports:
+            - "6379:6379"
 
     api:
         container_name: api-container
@@ -38,3 +70,5 @@ services:
             - postgres
         depends_on:
             - postgres
+            - mongo
+            - redis
