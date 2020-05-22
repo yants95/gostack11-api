@@ -9,16 +9,16 @@ export default class ProviderAppointmentsController {
         response: Response,
     ): Promise<Response> {
         const provider_id = request.user.id;
-        const { day, month, year } = request.body;
+        const { day, month, year } = request.query;
 
         const listProviderAppointments = container.resolve(
             ListProviderAppointmentsService,
         );
 
         const appointments = await listProviderAppointments.execute({
-            day,
-            month,
-            year,
+            month: Number(month),
+            day: Number(day),
+            year: Number(year),
             provider_id,
         });
 
