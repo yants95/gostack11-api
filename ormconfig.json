@@ -1,6 +1,6 @@
 [{
         "type": "postgres",
-        "host": "localhost",
+        "host": "postgres-container",
         "port": 5432,
         "username": "postgres",
         "password": "docker",
@@ -18,7 +18,7 @@
     {
         "name": "mongo",
         "type": "mongodb",
-        "host": "localhost",
+        "host": "mongo-container",
         "port": 27017,
         "database": "gobarber",
         "useUnifiedTopology": true,
