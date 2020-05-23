@@ -10,7 +10,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: yarn install
-            - run: yarn test
   
   test:
     executor:
@@ -25,6 +24,17 @@ workflows:
   version: 2.1
 
   gostack11-api-dev:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+      - test:
+          requires:
+            - build
+
+  gostack11-api-prod:
     jobs:
       - build:
           filters:
