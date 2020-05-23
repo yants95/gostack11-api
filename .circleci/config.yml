@@ -26,11 +26,11 @@ workflows:
 
   gostack11-api-dev:
     jobs:
-      - build
-        filters:
-          branches:
-            ignore:
-              - master
-      - test
-        requires:
-          - build
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
+      - test:
+          requires:
+            - build
