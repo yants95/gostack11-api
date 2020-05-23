@@ -29,7 +29,7 @@ workflows:
       - build:
           filters:
             branches:
-              ignore:
+              only:
                 - master
       - test:
           requires:
