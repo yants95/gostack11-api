@@ -25,7 +25,7 @@ class User {
     @Exclude()
     password: string;
 
-    @Column()
+    @Column({ nullable: true })
     avatar: string;
 
     @CreateDateColumn()
