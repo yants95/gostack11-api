@@ -5,6 +5,7 @@
         "username": "postgres",
         "password": "docker",
         "database": "gostack_gobarber",
+        "synchronize": true,
         "entities": [
             "./src/modules/**/infra/typeorm/entities/*.ts"
         ],
@@ -21,6 +22,7 @@
         "host": "mongo-container",
         "port": 27017,
         "database": "gobarber",
+        "synchronize": true,
         "useUnifiedTopology": true,
         "entities": [
             "./src/modules/**/infra/typeorm/schemas/*.ts"
