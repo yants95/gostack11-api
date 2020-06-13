@@ -40,7 +40,7 @@ Now, turn on your docker and run:
 # Create docker container
 $ yarn run up
 
-PS: If you want shutdown your containers, run: yarn run down
+PS: If you want stop your containers, run: yarn run stop
 ```
 
 After you run all the commands in sequence, your API should be running at address **http://localhost:3333**
